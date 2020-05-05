@@ -13,9 +13,10 @@ class GetTask extends React.Component {
     fetchTasks = e => {
         const db = firebase.firestore();
         e.preventDefault();
-        db.collection('tasks').where("Username", "==", this.state.username).get()
-        .then(querySnapshot => {
-            const data = querySnapshot.docs.map( doc => doc.data());
+        db.collection('tasks').where("Username", "==", this.state.username)
+        .onSnapshot(snapshot => {
+            const data = [];
+            snapshot.forEach(doc => data.push({ ...doc.data()}))
             this.setState({
                 tasks: data,
                 username: ""
