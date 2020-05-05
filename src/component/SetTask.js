@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from './Firestore';
 
-class Task extends React.Component {
+class SetTask extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -35,8 +35,11 @@ class Task extends React.Component {
     render() {
         return (
             <form onSubmit={this.addUser}>
+                <h4>Username</h4>
                 <input type="text" name="Username" placeholer="Username" onChange={this.updateInput} value={this.state.Username}/>
+                <h4>Task Name</h4>
                 <input type="text" name="TaskName" placeholer="Task Name" onChange={this.updateInput} value={this.state.TaskName}/>
+                <h4>Task Description</h4>
                 <input type="text" name="TaskDescription" placeholer="Task Description" onChange={this.updateInput} value={this.state.TaskDescription}/>
                 <button type="submit">Submit</button>
             </form>
@@ -44,4 +47,4 @@ class Task extends React.Component {
     }
 }
 
-export default Task;
+export default SetTask;

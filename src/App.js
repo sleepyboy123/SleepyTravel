@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-import Task from './component/Task';
+import SetTask from './component/SetTask';
+import GetTask from './component/GetTask';
 
 function App() {
   return (
     <div className="App">
-      SleepyTasks
-      <Task/>
+      <h1>SleepyTasks</h1>
+      <SetTask/>
+      <GetTask/>
     </div>
   );
 }
