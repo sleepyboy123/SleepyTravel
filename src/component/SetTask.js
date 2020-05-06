@@ -1,11 +1,12 @@
 import React from 'react';
 import firebase from './Firestore';
 
+import styles from './SetTask.module.css';
+
 class SetTask extends React.Component {
     constructor() {
         super();
         this.state = {
-            Username: "",
             TaskName: "",
             TaskDescription: ""
         }
@@ -17,16 +18,14 @@ class SetTask extends React.Component {
         })
     }
     
-    addUser = e => {
+    addTask = e => {
         e.preventDefault();
         const db = firebase.firestore();
         db.collection("tasks").add({
-            Username: this.state.Username,
             TaskName: this.state.TaskName,
             TaskDescription: this.state.TaskDescription
         })
         this.setState({
-            Username: "",
             TaskName: "",
             TaskDescription: ""
         })
@@ -34,14 +33,16 @@ class SetTask extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.addUser}>
-                <h4>Username</h4>
-                <input type="text" name="Username" placeholer="Username" onChange={this.updateInput} value={this.state.Username}/>
-                <h4>Task Name</h4>
-                <input type="text" name="TaskName" placeholer="Task Name" onChange={this.updateInput} value={this.state.TaskName}/>
-                <h4>Task Description</h4>
-                <input type="text" name="TaskDescription" placeholer="Task Description" onChange={this.updateInput} value={this.state.TaskDescription}/>
-                <button type="submit">Submit</button>
+            <form className={styles.form} onSubmit={this.addTask}>
+                <div>
+                    <h4 className={styles.tag}>Task Name</h4>
+                    <input className={styles.input} type="text" name="TaskName" placeholer="Task Name" onChange={this.updateInput} value={this.state.TaskName}/>
+                </div>
+                <div>
+                    <h4 className={styles.tag}>Task Description</h4>
+                    <input className={styles.input} type="text" name="TaskDescription" placeholer="Task Description" onChange={this.updateInput} value={this.state.TaskDescription}/>
+                </div>
+                <button className={styles.button} type="submit">Submit</button>
             </form>
         )
     }

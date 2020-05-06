@@ -1,0 +1,19 @@
+.form {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.tag {
+    display: inline-block;
+
+}
+
+.input {
+
+}
+
+.button {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}

@@ -1,38 +1,40 @@
 import React from 'react';
 import firebase from './Firestore';
 
+import styles from './GetTask.module.css';
+
 class GetTask extends React.Component {
     constructor() {
         super();
         this.state = {
             tasks: [],
-            username: ""
+            taskName: ""
         }
     }
     
     fetchTasks = e => {
         const db = firebase.firestore();
         e.preventDefault();
-        db.collection('tasks').where("Username", "==", this.state.username)
+        db.collection('tasks').where("TaskName", "==", this.state.taskName)
         .onSnapshot(snapshot => {
             const data = [];
             snapshot.forEach(doc => data.push({ ...doc.data()}))
             this.setState({
                 tasks: data,
-                username: ""
+                taskName: ""
             })
         })
     }
 
     updateInput = e => {
         this.setState({
-            username: e.target.value
+            taskName: e.target.value
         })
     }
 
-    deleteTask(username, taskName, taskDescription) {
+    deleteTask(taskName, taskDescription) {
         const db = firebase.firestore();
-        db.collection('tasks').where("Username", "==", username).where("TaskName", "==", taskName).where("TaskDescription", "==", taskDescription).get()
+        db.collection('tasks').where("TaskName", "==", taskName).where("TaskDescription", "==", taskDescription).get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 doc.ref.delete();
@@ -43,25 +45,25 @@ class GetTask extends React.Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.fetchTasks}>
-                        <input type="text" name="Username" placeholer="Username" onChange={this.updateInput} value={this.state.username}/>
+                <form className={styles.form} onSubmit={this.fetchTasks}>
+                        <input className={styles.input} type="text" name="Username" placeholer="Username" onChange={this.updateInput} value={this.state.username}/>
                         <button type="submit">Search</button>
-                    </form>
+                </form>
                 {this.state.tasks.length === 0 ? <div></div> : 
                 <div>
-                    <table>
+                    <br></br>
+                    <table className={styles.table}>
                         <tr>
-                            <th>Username</th>
                             <th>Task Name</th>
                             <th>Task Description</th>
+                            <th>Delete</th>
                         </tr>
                         {this.state.tasks.map(item => {
                             return (
                                 <tr>
-                                    <td>{item.Username}</td>
                                     <td>{item.TaskName}</td>
                                     <td>{item.TaskDescription}</td>
-                                    <button onClick={() => {this.deleteTask(item.Username, item.TaskName, item.TaskDescription)}}>Delete</button>
+                                    <button onClick={() => {this.deleteTask(item.TaskName, item.TaskDescription)}}>Delete</button>
                                 </tr>
                             )
                         })}
