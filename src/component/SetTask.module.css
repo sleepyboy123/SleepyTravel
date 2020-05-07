@@ -1,19 +1,35 @@
 .form {
-    width: 40%;
+    width: 30%;
     margin: 0 auto;
 }
 
-.tag {
-    display: inline-block;
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
+.tag {
+    float: left;
+    width: 30%;
+    margin-top: 6px;
 }
 
 .input {
-
+    float: left;
+    width: 69%;
+    margin-top: 6px;
 }
 
 .button {
     display: block;
     margin: 0 auto;
     margin-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .tag, .input {
+      width: 100%;
+      margin-top: 0;
+    }
 }

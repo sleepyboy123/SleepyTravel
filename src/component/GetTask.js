@@ -46,7 +46,7 @@ class GetTask extends React.Component {
         return (
             <div>
                 <form className={styles.form} onSubmit={this.fetchTasks}>
-                        <input className={styles.input} type="text" name="Username" placeholer="Username" onChange={this.updateInput} value={this.state.username}/>
+                        <input className={styles.input} type="text" name="TaskName" placeholer="Task Name" onChange={this.updateInput} value={this.state.taskName}/>
                         <button type="submit">Search</button>
                 </form>
                 {this.state.tasks.length === 0 ? <div></div> : 
