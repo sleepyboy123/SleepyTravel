@@ -19,6 +19,9 @@ class SetTask extends React.Component {
     }
     
     addTask = e => {
+        if (this.state.TaskName === "" || this.state.TaskDescription === "") {
+            return 0;
+        }
         e.preventDefault();
         const db = firebase.firestore();
         db.collection("tasks").add({
@@ -34,8 +37,8 @@ class SetTask extends React.Component {
     render() {
         return (
             <form className={styles.form} onSubmit={this.addTask}>
-                <input className={styles.input} type="text" name="TaskName" autocomplete="off" placeholder="Task Name" onChange={this.updateInput} value={this.state.TaskName}/>
-                <input className={styles.input} type="text" name="TaskDescription" autocomplete="off" placeholder="Task Description" onChange={this.updateInput} value={this.state.TaskDescription}/>
+                <input className={styles.input} type="text" name="TaskName" autocomplete="off" placeholder="Task Name" onChange={this.updateInput} value={this.state.TaskName} required/>
+                <input className={styles.input} type="text" name="TaskDescription" autocomplete="off" placeholder="Task Description" onChange={this.updateInput} value={this.state.TaskDescription} required/>
                 <button className={styles.button} type="submit">Submit</button>
             </form>
         )
