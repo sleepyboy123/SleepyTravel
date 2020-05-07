@@ -40,12 +40,12 @@
 table {
     font-family: 'Open Sans', sans-serif;
     border-spacing: 20px !important;
-    background: #9b9b9b;
     border-radius: 10px;
     overflow: hidden;
     width: 40%;
     margin: 0 auto;
     position: relative;
+    color: #9b9b9b;
 }
 
 table td, table th {
