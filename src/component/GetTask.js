@@ -47,12 +47,12 @@ class GetTask extends React.Component {
             <div>
                 <form className={styles.form} onSubmit={this.fetchTasks}>
                         <input className={styles.input} type="text" name="TaskName" placeholder="Task Name" onChange={this.updateInput} value={this.state.taskName}/>
-                        <button type="submit">Search</button>
+                        <button className={styles.search} type="submit">Search</button>
                 </form>
                 {this.state.tasks.length === 0 ? <div></div> : 
                 <div>
                     <br></br>
-                    <table className={styles.table}>
+                    <table>
                         <tr>
                             <th>Task Name</th>
                             <th>Task Description</th>
@@ -63,7 +63,7 @@ class GetTask extends React.Component {
                                 <tr>
                                     <td>{item.TaskName}</td>
                                     <td>{item.TaskDescription}</td>
-                                    <button onClick={() => {this.deleteTask(item.TaskName, item.TaskDescription)}}>Delete</button>
+                                    <button style={{marginLeft: 5}} onClick={() => {this.deleteTask(item.TaskName, item.TaskDescription)}}>Delete</button>
                                 </tr>
                             )
                         })}
