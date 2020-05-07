@@ -34,8 +34,8 @@ class SetTask extends React.Component {
     render() {
         return (
             <form className={styles.form} onSubmit={this.addTask}>
-                <input className={styles.input} type="text" name="TaskName" placeholder="Task Name" onChange={this.updateInput} value={this.state.TaskName}/>
-                <input className={styles.input} type="text" name="TaskDescription" placeholder="Task Description" onChange={this.updateInput} value={this.state.TaskDescription}/>
+                <input className={styles.input} type="text" name="TaskName" autocomplete="off" placeholder="Task Name" onChange={this.updateInput} value={this.state.TaskName}/>
+                <input className={styles.input} type="text" name="TaskDescription" autocomplete="off" placeholder="Task Description" onChange={this.updateInput} value={this.state.TaskDescription}/>
                 <button className={styles.button} type="submit">Submit</button>
             </form>
         )

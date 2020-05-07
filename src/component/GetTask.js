@@ -13,6 +13,9 @@ class GetTask extends React.Component {
     }
     
     fetchTasks = e => {
+        if (this.state.taskName === "") {
+            return 0;
+        }
         const db = firebase.firestore();
         e.preventDefault();
         db.collection('tasks').where("TaskName", "==", this.state.taskName)
@@ -46,7 +49,7 @@ class GetTask extends React.Component {
         return (
             <div>
                 <form className={styles.form} onSubmit={this.fetchTasks}>
-                        <input className={styles.input} type="text" name="TaskName" placeholder="Task Name" onChange={this.updateInput} value={this.state.taskName}/>
+                        <input className={styles.input} type="text" name="TaskName" autocomplete="off" placeholder="Task Name" onChange={this.updateInput} value={this.state.taskName}/>
                         <button className={styles.search} type="submit">Search</button>
                 </form>
                 {this.state.tasks.length === 0 ? <div></div> : 
@@ -63,7 +66,7 @@ class GetTask extends React.Component {
                                 <tr>
                                     <td>{item.TaskName}</td>
                                     <td>{item.TaskDescription}</td>
-                                    <button style={{marginLeft: 5}} onClick={() => {this.deleteTask(item.TaskName, item.TaskDescription)}}>Delete</button>
+                                    <button className={styles.delete} onClick={() => {this.deleteTask(item.TaskName, item.TaskDescription)}}>Delete</button>
                                 </tr>
                             )
                         })}
