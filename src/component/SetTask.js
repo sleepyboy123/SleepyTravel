@@ -34,14 +34,8 @@ class SetTask extends React.Component {
     render() {
         return (
             <form className={styles.form} onSubmit={this.addTask}>
-                <div className={styles.row}>
-                    <h4 className={styles.tag}>Task Name</h4>
-                    <input className={styles.input} type="text" name="TaskName" placeholer="Task Name" onChange={this.updateInput} value={this.state.TaskName}/>
-                </div>
-                <div className={styles.row}>
-                    <h4 className={styles.tag}>Task Description</h4>
-                    <input className={styles.input} type="text" name="TaskDescription" placeholer="Task Description" onChange={this.updateInput} value={this.state.TaskDescription}/>
-                </div>
+                <input className={styles.input} type="text" name="TaskName" placeholder="Task Name" onChange={this.updateInput} value={this.state.TaskName}/>
+                <input className={styles.input} type="text" name="TaskDescription" placeholder="Task Description" onChange={this.updateInput} value={this.state.TaskDescription}/>
                 <button className={styles.button} type="submit">Submit</button>
             </form>
         )
