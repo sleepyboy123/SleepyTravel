@@ -3,6 +3,8 @@ import firebase from './Firestore';
 
 import styles from './SetTask.module.css';
 
+const auth = firebase.auth()
+
 class SetTask extends React.Component {
     constructor() {
         super();
@@ -10,6 +12,12 @@ class SetTask extends React.Component {
             TaskName: "",
             TaskDescription: ""
         }
+    }
+
+    componentDidMount() {
+        auth.signInWithEmailAndPassword('sleepysurvey123@gmail.com', 'Asdasd123%').then(cred => {
+
+        })
     }
 
     updateInput = e => {
