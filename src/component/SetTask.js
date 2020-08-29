@@ -14,12 +14,6 @@ class SetTask extends React.Component {
         }
     }
 
-    componentDidMount() {
-        auth.signInWithEmailAndPassword('sleepysurvey123@gmail.com', 'Asdasd123%').then(cred => {
-
-        })
-    }
-
     updateInput = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -32,6 +26,9 @@ class SetTask extends React.Component {
         }
         e.preventDefault();
         const db = firebase.firestore();
+        auth.signInWithEmailAndPassword('sleepysurvey123@gmail.com', 'Asdasd123%').then(cred => {
+
+        })
         db.collection("tasks").add({
             TaskName: this.state.TaskName,
             TaskDescription: this.state.TaskDescription
